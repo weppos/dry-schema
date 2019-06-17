@@ -9,3 +9,5 @@ tmp/
 Gemfile.lock
 doc
 .rubocop.yml
+site
+

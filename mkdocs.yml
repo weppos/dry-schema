@@ -1,0 +1,35 @@
+site_name: "dry-schema documentation"
+repo_url: https://github.com/dry-rb/dry-schema
+edit_uri: edit/master/docs/
+copyright: "Copyright &copy; 2015-2019 dry-rb team"
+docs_dir: docs
+nav:
+  - Basics:
+    - Type specs: basics/type-specs
+    - Working with schemas: basics/working-with-schemas
+    - Macros: basics/macros
+    - Built-in predicates: basics/built-in-predicates
+  - Optional keys and values: optional-keys-and-values
+  - Nested data: nested-data
+  - Reusing schemas: reusing-schemas
+  - Params: params
+  - JSON: json
+  - Error messages: error-messages
+  - Advanced:
+    - Predicate logic: advanced/predicate-logic
+    - Filtering: advanced/filtering
+    - Key maps: advanced/key-maps
+    - Rule AST: advanced/rule-ast
+  - Extensions:
+    - Monads: extensions/monads
+    - Hints: extensions/hints
+theme:
+  name: material
+  palette:
+    primary: 'teal'
+    accent: 'teal'
+  logo: 'images/dry-rb.png'
+  favicon: 'images/dry-rb-fav.png'
+markdown_extensions:
+  - admonition
+  - codehilite
