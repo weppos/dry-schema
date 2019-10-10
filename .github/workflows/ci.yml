@@ -13,8 +13,8 @@ jobs:
     strategy:
       matrix:
         ruby: ["2.6.x", "2.5.x", "2.4.x"]
-        dry_logic_from_master: ["false", "true"]
-        dry_types_from_master: ["false", "true"]
+        dry_logic_from_master: ["dry_logic_from_master", "dry_logic_from_rubygems"]
+        dry_types_from_master: ["dry_types_from_master", "dry_types_from_rubygems"]
     steps:
       - uses: actions/checkout@v1
       - name: Set up Ruby
@@ -33,8 +33,8 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        dry_logic_from_master: ["false", "true"]
-        dry_types_from_master: ["false", "true"]
+        dry_logic_from_master: ["dry_logic_from_master", "dry_logic_from_rubygems"]
+        dry_types_from_master: ["dry_types_from_master", "dry_types_from_rubygems"]
     container:
       image: jruby:9.2.8
     steps:

@@ -6,8 +6,14 @@ git_source(:github) do |repo_name| "https://github.com/#{repo_name}" end
 
 gemspec
 
-gem 'dry-logic', github: 'dry-rb/dry-logic', branch: 'master' if ENV['DRY_LOGIC_FROM_MASTER'].eql?('true')
-gem 'dry-types', github: 'dry-rb/dry-types', branch: 'master' if ENV['DRY_TYPES_FROM_MASTER'].eql?('true')
+if ENV['DRY_LOGIC_FROM_MASTER']
+  gem 'dry-logic', github: 'dry-rb/dry-logic', branch: 'master'
+end
+
+
+if ENV['DRY_TYPES_FROM_MASTER']
+  gem 'dry-types', github: 'dry-rb/dry-types', branch: 'master'
+end
 
 gem 'ossy', github: 'solnic/ossy', branch: 'master'
 
