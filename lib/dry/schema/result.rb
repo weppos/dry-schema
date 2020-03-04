@@ -34,8 +34,23 @@ module Dry
       # @api private
       def self.new(*, **)
         result = super
-        yield(result)
+        yield(result) if block_given?
         result.freeze
+      end
+
+      # Return a new result scoped to a specific path
+      #
+      # @param [Symbol, Array, Path]
+      #
+      # @return [Result]
+      #
+      # @api private
+      def at(path)
+        self.class.new(
+          Path[path].reduce(output) { |a, e| a[e] },
+          message_compiler: message_compiler,
+          results: results
+        )
       end
 
       # @api private

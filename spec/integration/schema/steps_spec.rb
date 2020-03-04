@@ -19,4 +19,31 @@ RSpec.describe Dry::Schema, 'callbacks' do
       expect(schema.(date: nil).to_h).to eql(name: 'default')
     end
   end
+
+  context 'under a nested schema' do
+    subject(:schema) do
+      Dry::Schema.define do
+        required(:user).hash(Test::UserSchema)
+      end
+    end
+
+    before do
+      Test::UserSchema = Dry::Schema.define do
+        optional(:name).maybe(:string)
+        required(:date).maybe(:date)
+
+        before(:key_coercer) do |result|
+          { name: 'default' }.merge(result.to_h)
+        end
+
+        after(:rule_applier) do |result|
+          result.to_h.compact
+        end
+      end
+    end
+
+    it 'calls callbacks' do
+      expect(schema.(date: nil).to_h).to eql(name: 'default')
+    end
+  end
 end

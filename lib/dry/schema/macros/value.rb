@@ -23,6 +23,8 @@ module Dry
                 schema.type_schema
               end
 
+            schema_dsl.steps.import_callbacks(name, schema.steps)
+
             type(updated_type)
           end
 

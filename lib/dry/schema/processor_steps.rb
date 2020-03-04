@@ -124,6 +124,25 @@ module Dry
           oldval + newval
         end
       end
+
+      # @api private
+      def import_callbacks(path, other)
+        other.before_steps.each do |name, before_steps|
+          before_steps.each do |step|
+            before(name) do |result|
+              step.(result.at(path))
+            end
+          end
+        end
+
+        other.after_steps.each do |name, after_steps|
+          after_steps.each do |step|
+            after(name) do |result|
+              step.(result.at(path))
+            end
+          end
+        end
+      end
     end
   end
 end
